@@ -1,6 +1,13 @@
 package ar.edu.et32.FlujoDatos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
 import ar.edu.et32.FlujoDatos.Utils;
 
 public class coleciones {
@@ -13,6 +20,17 @@ public class coleciones {
 		String[] VectorApellidos = { "Perez", "Gonzalez", "Ramirez" };
 		
 		ArrayList<String> ListaFrutas = new ArrayList<>();
+		LinkedList<Integer> listaNumeros = new LinkedList<>(); // mas optimizado en RAM 
+		HashMap<String, String> DiccPalabras = new HashMap<>();
+		LinkedHashMap<String, String> a;
+		HashSet<Integer> PrimaryKeys = new HashSet<>();//Elementos unicos
+		LinkedHashSet<String, String> b;
+		
+		DiccPalabras.containsKey("");//bool
+		DiccPalabras.containsValue("");// bool
+		DiccPalabras.get("Clave a buscar");// devuelve value
+		DiccPalabras.put("apple", "manzana");//agrega clave/valor en el diccionario
+		DiccPalabras.entrySet();//solo devuelve keys
 		
 		ListaFrutas.add("Manzana");		//0
 		ListaFrutas.add("banana");  	//1
@@ -45,5 +63,18 @@ public class coleciones {
 		
 		ListaFrutas.clear();			//  vacia la lista
 		
+		
+		
+		for(int i=0; i<=ListaFrutas.size(); i++) {
+			ListaFrutas.get(i);
+		}
+		
+		for(Integer numero : listaNumeros ) {
+			Utils.getOut().println(numero);
+		}
+		Iterator i = ListaFrutas.iterator();
+		while( i.hasNext() ) {
+			Utils.getOut().println(i.next());
+		}
 	}
 }

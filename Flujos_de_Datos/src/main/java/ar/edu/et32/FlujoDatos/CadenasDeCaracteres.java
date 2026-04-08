@@ -1,6 +1,7 @@
 package ar.edu.et32.FlujoDatos;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class CadenasDeCaracteres {
 
@@ -47,7 +48,18 @@ public class CadenasDeCaracteres {
 					sb.toString();		//devuelve el texto completo construido
 					
 					Utils.getOut().println( sb.toString() );
+				//	Utils.getOut().printf("Dato: %s %d %f", dato1, dato2, dato3);
 					Utils.getOut().flush();
+					
+					//alternativa split()
+					StringTokenizer st= new StringTokenizer(linea, "\\+");  // lee linea y cada vez q haya una p corta en vectores con un ciclo
+					// linea = hola como estas espero todo bien
+					// linea 78+2=80
+					while(st.hasMoreTokens()) {
+						st.nextToken();    // hola -- como -- estas...
+						st.nextToken("l"); //ho
+					}
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
