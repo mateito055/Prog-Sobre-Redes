@@ -1,0 +1,2 @@
+manada enter
+primer renglonescribi con append8
