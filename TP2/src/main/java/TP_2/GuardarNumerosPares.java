@@ -28,12 +28,12 @@ public class GuardarNumerosPares {
 				}
 			}
 
-			PrintWriter escritorArchivo = new PrintWriter(new FileWriter("GuardarNumerosPares.txt"),true);
+			PrintWriter escritorArchivo = new PrintWriter(new FileWriter("numeros.txt"),true);
 			System.out.println(lista);
 	        escritorArchivo.println(lista);
 
 			escritorArchivo.close();
-			System.out.println("Lista guardada exitosamente en el archivo 'GuardarNumerosPares.txt'.");
+			System.out.println("Lista guardada exitosamente en el archivo 'numeros.txt'.");
 
 		} catch (IOException e) {
 			System.err.println("Ocurrió un error de entrada/salida: " + e.getMessage());
