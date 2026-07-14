@@ -1,6 +1,7 @@
 package com.examen;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  * Proporciona metodos para validar datos ingresados por el usuario
@@ -25,6 +26,39 @@ public class Validador {
     public static String leerNoVacio(BufferedReader reader, String mensaje) {
         // COMPLETAR: pedir ingreso, validar que no este vacio,
         // repetir hasta obtener un valor valido
-        return "";
+        String entrada = "";
+        boolean valido = false;
+
+        // Códigos ANSI para mantener la estética colorida del examen
+        String ROJO = "\u001B[31m";
+        String RESET = "\u001B[0m";
+
+        while (!valido) {
+            try {
+                // Imprime el mensaje descriptivo para guiar al usuario
+                System.out.print(mensaje);
+                
+                // Lee la línea de la consola usando BufferedReader
+                String lineaLeida = reader.readLine();
+                
+                if (lineaLeida != null) {
+                    entrada = lineaLeida.trim(); // Quita espacios en blanco al inicio y final
+                }
+
+                // Validación: verifica si quedó vacía después del recorte de espacios
+                if (entrada.isEmpty()) {
+                    System.out.println(ROJO + "Error: El dato no puede estar vacío. Inténtelo de nuevo." + RESET);
+                } else {
+                    valido = true; // Salimos del bucle si el dato es correcto
+                }
+                
+            } catch (IOException ex) {
+                // Registra el error en crash.log de forma silenciosa sin romper el flujo del menú
+                LogManager.registrarError("Fallo crítico en la lectura de consola del Validador", ex);
+                System.out.println(ROJO + "Error al leer de consola. Inténtelo nuevamente." + RESET);
+            }
+        }
+        
+        return entrada;
     }
 }
